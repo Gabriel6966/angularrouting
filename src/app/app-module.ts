@@ -10,6 +10,9 @@ import { MenuComponent } from './components/menu-component/menu-component';
 import { MusicaComponent } from './components/musica-component/musica-component';
 import { NotFoundComponent } from './components/not-found-component/not-found-component';
 import { NumeroDoble } from './components/numero-doble/numero-doble';
+import { TablaMultiplicarRouting } from './components/tabla-multiplicar-routing/tabla-multiplicar-routing';
+import { FormsModule } from '@angular/forms';
+import { MenuTablaMultiplicarComponent } from './components/menu-tabla-multiplicar-component/menu-tabla-multiplicar-component';
 
 @NgModule({
   declarations: [],
@@ -22,9 +25,11 @@ import { NumeroDoble } from './components/numero-doble/numero-doble';
     NotFoundComponent,
     MenuComponent,
     NumeroDoble,
+    TablaMultiplicarRouting,
+    MenuTablaMultiplicarComponent,
     RouterModule.forRoot(routes),
   ],
-  providers: [provideBrowserGlobalErrorListeners()],
+  providers: [provideBrowserGlobalErrorListeners(), FormsModule],
   bootstrap: [App],
 })
 export class AppModule {}
