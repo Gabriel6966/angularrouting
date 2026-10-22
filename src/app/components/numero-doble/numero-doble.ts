@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
@@ -11,23 +11,25 @@ export class NumeroDoble implements OnInit {
   public numero!: number;
 
   constructor(
-    private readonly activeRoute: ActivatedRoute,
-    private readonly router: Router,
+    private  _activeRoute: ActivatedRoute,
+    private  _router: Router,
+    private _cdr: ChangeDetectorRef,
   ) {}
 
   goToHome(num: number | null): void {
     if (num !== null) {
-      this.router.navigate(['/doble', num]);
+      this._router.navigate(['/doble', num]);
     } else {
-      this.router.navigate(['/']);
+      this._router.navigate(['/']);
     }
   }
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe((params: Params) => {
-      if (params['numero'] !== undefined) {
+    this._activeRoute.params.subscribe((params: Params) => {
+      if (params['numero'] !== null) {
         this.numero = parseInt(params['numero'], 10);
         this.doble = this.numero * 2;
+        this._cdr.detectChanges();
       }
     });
   }
