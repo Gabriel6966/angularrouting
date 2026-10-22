@@ -4,6 +4,7 @@ import { MenuComponent } from './components/menu-component/menu-component';
 
 @Component({
   imports: [MenuComponent, RouterOutlet],
+  standalone: true,
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
